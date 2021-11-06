@@ -7,4 +7,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Jet Music Box"
-include ':app'
+include(":app")
