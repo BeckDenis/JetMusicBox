@@ -15,3 +15,5 @@
 local.properties
 .idea/vcs.xml
 .idea/gradle.xml
+.idea/codeStyles/Project.xml
+.idea/codeStyles/codeStyleConfig.xml
