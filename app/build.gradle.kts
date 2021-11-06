@@ -1,3 +1,5 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+
 plugins {
     id("com.android.application")
     id("kotlin-android")
@@ -16,6 +18,8 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    val localProperties = gradleLocalProperties(rootDir)
+
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
@@ -23,12 +27,33 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+
+            buildConfigField("String", "apiKey", localProperties.getProperty("apiKey"))
+            buildConfigField(
+                "String", "authURL", "\"https://accounts.spotify.com/authorize\""
+            )
+            buildConfigField(
+                "String", "redirectURI", "\"https://www.denisbeck.com\""
+            )
+        }
+        getByName("debug") {
+            isDebuggable = true
+
+            buildConfigField("String", "apiKey", localProperties.getProperty("apiKey"))
+            buildConfigField(
+                "String", "authURL", "\"https://accounts.spotify.com/authorize\""
+            )
+            buildConfigField(
+                "String", "redirectURI", "\"https://www.denisbeck.com\""
+            )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = "1.8"
     }
