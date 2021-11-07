@@ -30,7 +30,9 @@ android {
                 "proguard-rules.pro"
             )
 
-            buildConfigField("String", "apiKey", localProperties.getProperty("apiKey"))
+            buildConfigField(
+                "String", "clientId", localProperties.getProperty("clientId")
+            )
             buildConfigField(
                 "String", "authURL", "\"https://accounts.spotify.com\""
             )
@@ -41,7 +43,9 @@ android {
         getByName("debug") {
             isDebuggable = true
 
-            buildConfigField("String", "apiKey", localProperties.getProperty("apiKey"))
+            buildConfigField(
+                "String", "clientId", localProperties.getProperty("clientId")
+            )
             buildConfigField(
                 "String", "authURL", "\"https://accounts.spotify.com\""
             )
