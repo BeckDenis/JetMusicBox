@@ -18,6 +18,7 @@ object URL {
     }
 
     private fun getAuthUrl() = Uri.parse(BuildConfig.authURL).buildUpon()
+        .appendPath(Paths.authorize)
         .appendQueryParameter(Queries.responseType, ResponseTypes.code)
         .appendQueryParameter(Queries.clientId, BuildConfig.apiKey)
         .appendQueryParameter(Queries.scope, Scopes.userReadPrivate)
