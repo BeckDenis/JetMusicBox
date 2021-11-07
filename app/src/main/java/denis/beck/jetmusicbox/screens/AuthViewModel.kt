@@ -14,7 +14,7 @@ class AuthViewModel @Inject constructor(private val authRepository: AuthReposito
     fun authorize(code: String) {
         viewModelScope.launch {
             try {
-                authRepository.authorize(code)
+                Timber.d(authRepository.authorize(code).toString())
             } catch (e: Exception) {
                 Timber.e(e.message)
             }
