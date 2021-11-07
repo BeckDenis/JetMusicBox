@@ -1,4 +1,4 @@
-package denis.beck.jetmusicbox.networking
+package denis.beck.jetmusicbox.networking.constants
 
 object Paths {
     const val authorize = "authorize"

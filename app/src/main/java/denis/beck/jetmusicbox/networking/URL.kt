@@ -2,6 +2,8 @@ package denis.beck.jetmusicbox.networking
 
 import android.net.Uri
 import denis.beck.jetmusicbox.BuildConfig
+import denis.beck.jetmusicbox.networking.constants.Paths
+import denis.beck.jetmusicbox.networking.constants.Queries
 
 object URL {
 

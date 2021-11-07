@@ -8,7 +8,7 @@ import dagger.hilt.components.SingletonComponent
 import denis.beck.jetmusicbox.BuildConfig
 import denis.beck.jetmusicbox.networking.AuthInterceptor
 import denis.beck.jetmusicbox.networking.apis.AuthApi
-import denis.beck.jetmusicbox.networking.apis.ContentTypes
+import denis.beck.jetmusicbox.networking.constants.ContentTypes
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
