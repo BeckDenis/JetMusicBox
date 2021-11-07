@@ -9,12 +9,16 @@ import denis.beck.jetmusicbox.views.AuthWebViewClient
 
 @SuppressLint("SetJavaScriptEnabled")
 @Composable
-fun AuthWebScreen() {
+fun AuthWebScreen(
+    viewModel: AuthViewModel
+) {
     AndroidView(
         factory = { context ->
             WebView(context).apply {
                 webViewClient = AuthWebViewClient(
-                    code = {},
+                    code = { code ->
+                           viewModel.authorize(code = code)
+                    },
                     error = {}
                 )
                 settings.javaScriptEnabled = true

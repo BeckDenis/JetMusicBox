@@ -1,4 +1,4 @@
-package denis.beck.jetmusicbox.networking
+package denis.beck.jetmusicbox.networking.constants
 
 object Queries {
     const val responseType = "response_type"
@@ -7,4 +7,5 @@ object Queries {
     const val redirectUri = "redirect_uri"
     const val code = "code"
     const val error = "error"
+    const val grantType = "grant_type"
 }

@@ -3,7 +3,7 @@ package denis.beck.jetmusicbox.views
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import denis.beck.jetmusicbox.networking.Queries
+import denis.beck.jetmusicbox.networking.constants.Queries
 import denis.beck.jetmusicbox.networking.URL
 
 class AuthWebViewClient(

@@ -5,6 +5,7 @@ plugins {
     id("com.android.application")
     id("kotlin-android")
     id("dagger.hilt.android.plugin")
+    kotlin("plugin.serialization") version "1.5.31"
 }
 
 android {
@@ -30,9 +31,14 @@ android {
                 "proguard-rules.pro"
             )
 
-            buildConfigField("String", "apiKey", localProperties.getProperty("apiKey"))
             buildConfigField(
-                "String", "authURL", "\"https://accounts.spotify.com/authorize\""
+                "String", "clientId", localProperties.getProperty("clientId")
+            )
+            buildConfigField(
+                "String", "clientSecret", localProperties.getProperty("clientSecret")
+            )
+            buildConfigField(
+                "String", "authURL", "\"https://accounts.spotify.com\""
             )
             buildConfigField(
                 "String", "redirectURI", "\"https://www.denisbeck.com\""
@@ -41,9 +47,14 @@ android {
         getByName("debug") {
             isDebuggable = true
 
-            buildConfigField("String", "apiKey", localProperties.getProperty("apiKey"))
             buildConfigField(
-                "String", "authURL", "\"https://accounts.spotify.com/authorize\""
+                "String", "clientId", localProperties.getProperty("clientId")
+            )
+            buildConfigField(
+                "String", "clientSecret", localProperties.getProperty("clientSecret")
+            )
+            buildConfigField(
+                "String", "authURL", "\"https://accounts.spotify.com\""
             )
             buildConfigField(
                 "String", "redirectURI", "\"https://www.denisbeck.com\""
@@ -99,6 +110,18 @@ dependencies {
     // Hilt
     implementation("com.google.dagger:hilt-android:2.38.1")
     kapt("com.google.dagger:hilt-android-compiler:2.38.1")
+
+    // Retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0")
+
+    // OkHttp
+    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.9.0"))
+    implementation("com.squareup.okhttp3:okhttp")
+    implementation("com.squareup.okhttp3:logging-interceptor")
+
+    // Serialization
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0")
 
     // Timber
     implementation("com.jakewharton.timber:timber:5.0.1")
