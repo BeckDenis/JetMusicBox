@@ -5,6 +5,7 @@ plugins {
     id("com.android.application")
     id("kotlin-android")
     id("dagger.hilt.android.plugin")
+    kotlin("plugin.serialization") version "1.5.31"
 }
 
 android {
@@ -118,6 +119,9 @@ dependencies {
     implementation(platform("com.squareup.okhttp3:okhttp-bom:4.9.0"))
     implementation("com.squareup.okhttp3:okhttp")
     implementation("com.squareup.okhttp3:logging-interceptor")
+
+    // Serialization
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0")
 
     // Timber
     implementation("com.jakewharton.timber:timber:5.0.1")
