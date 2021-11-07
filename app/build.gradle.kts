@@ -100,6 +100,9 @@ dependencies {
     implementation("com.google.dagger:hilt-android:2.38.1")
     kapt("com.google.dagger:hilt-android-compiler:2.38.1")
 
+    // Timber
+    implementation("com.jakewharton.timber:timber:5.0.1")
+
     /** Test */
     testImplementation("junit:junit:4.+")
 
