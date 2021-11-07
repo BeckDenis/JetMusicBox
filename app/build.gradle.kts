@@ -34,6 +34,9 @@ android {
                 "String", "clientId", localProperties.getProperty("clientId")
             )
             buildConfigField(
+                "String", "clientSecret", localProperties.getProperty("clientSecret")
+            )
+            buildConfigField(
                 "String", "authURL", "\"https://accounts.spotify.com\""
             )
             buildConfigField(
@@ -45,6 +48,9 @@ android {
 
             buildConfigField(
                 "String", "clientId", localProperties.getProperty("clientId")
+            )
+            buildConfigField(
+                "String", "clientSecret", localProperties.getProperty("clientSecret")
             )
             buildConfigField(
                 "String", "authURL", "\"https://accounts.spotify.com\""
