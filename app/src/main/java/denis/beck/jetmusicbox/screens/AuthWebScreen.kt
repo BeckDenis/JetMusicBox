@@ -13,8 +13,10 @@ fun AuthWebScreen() {
     AndroidView(
         factory = { context ->
             WebView(context).apply {
-                webViewClient = AuthWebViewClient {
-                }
+                webViewClient = AuthWebViewClient(
+                    code = {},
+                    error = {}
+                )
                 settings.javaScriptEnabled = true
                 loadUrl(URL.auth)
             }
