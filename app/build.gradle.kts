@@ -131,6 +131,9 @@ dependencies {
     // DataStore
     implementation("androidx.datastore:datastore:1.0.0")
 
+    // Navigation
+    implementation("androidx.navigation:navigation-compose:2.4.0-beta02")
+
     /** Test */
     testImplementation("junit:junit:4.+")
 
