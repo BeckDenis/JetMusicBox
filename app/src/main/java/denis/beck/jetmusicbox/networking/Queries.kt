@@ -6,4 +6,5 @@ object Queries {
     const val scope = "scope"
     const val redirectUri = "redirect_uri"
     const val code = "code"
+    const val error = "error"
 }
