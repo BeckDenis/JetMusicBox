@@ -1,4 +1,4 @@
-package denis.beck.jetmusicbox.screens
+package denis.beck.jetmusicbox.screens.auth
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

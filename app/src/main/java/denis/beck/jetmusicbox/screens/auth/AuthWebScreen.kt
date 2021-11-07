@@ -1,4 +1,4 @@
-package denis.beck.jetmusicbox.screens
+package denis.beck.jetmusicbox.screens.auth
 
 import android.annotation.SuppressLint
 import android.webkit.WebView
@@ -17,7 +17,7 @@ fun AuthWebScreen(
             WebView(context).apply {
                 webViewClient = AuthWebViewClient(
                     code = { code ->
-                           viewModel.authorize(code = code)
+                        viewModel.authorize(code = code)
                     },
                     error = {}
                 )
