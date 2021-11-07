@@ -1,3 +1,4 @@
+
 import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
 
 plugins {
@@ -6,6 +7,7 @@ plugins {
     id("kotlin-android")
     id("dagger.hilt.android.plugin")
     kotlin("plugin.serialization") version "1.5.31"
+    id("com.google.protobuf") version "0.8.17"
 }
 
 android {
@@ -125,6 +127,9 @@ dependencies {
 
     // Timber
     implementation("com.jakewharton.timber:timber:5.0.1")
+
+    // DataStore
+    implementation("androidx.datastore:datastore:1.0.0")
 
     /** Test */
     testImplementation("junit:junit:4.+")
