@@ -7,4 +7,5 @@ object Queries {
     const val redirectUri = "redirect_uri"
     const val code = "code"
     const val error = "error"
+    const val grantType = "grant_type"
 }
