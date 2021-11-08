@@ -111,6 +111,7 @@ dependencies {
 
     // Hilt
     implementation("com.google.dagger:hilt-android:2.38.1")
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0-alpha03")
     kapt("com.google.dagger:hilt-android-compiler:2.38.1")
 
     // Retrofit
@@ -130,6 +131,9 @@ dependencies {
 
     // DataStore
     implementation("androidx.datastore:datastore:1.0.0")
+
+    // Navigation
+    implementation("androidx.navigation:navigation-compose:2.4.0-beta02")
 
     /** Test */
     testImplementation("junit:junit:4.+")
