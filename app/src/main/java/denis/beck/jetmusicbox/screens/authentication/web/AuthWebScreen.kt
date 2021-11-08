@@ -12,7 +12,7 @@ import denis.beck.jetmusicbox.networking.URL
 import denis.beck.jetmusicbox.screens.authentication.web.models.AuthWebUiState
 import denis.beck.jetmusicbox.views.AuthWebViewClient
 
-@SuppressLint("SetJavaScriptEnabled")
+
 @Composable
 fun AuthWebScreen(
     navController: NavController,
@@ -29,6 +29,12 @@ fun AuthWebScreen(
         }
     }
 
+    AuthWebUI(viewModel)
+}
+
+@SuppressLint("SetJavaScriptEnabled")
+@Composable
+private fun AuthWebUI(viewModel: AuthWebViewModel) {
     AndroidView(
         factory = { context ->
             WebView(context).apply {
