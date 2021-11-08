@@ -12,7 +12,6 @@ import denis.beck.jetmusicbox.networking.URL
 import denis.beck.jetmusicbox.screens.authentication.web.models.AuthWebUiState
 import denis.beck.jetmusicbox.views.AuthWebViewClient
 
-
 @Composable
 fun AuthWebScreen(
     navController: NavController,
