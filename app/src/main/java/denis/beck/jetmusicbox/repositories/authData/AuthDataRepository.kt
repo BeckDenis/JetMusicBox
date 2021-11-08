@@ -1,8 +1,8 @@
-package denis.beck.jetmusicbox.managers.authData
+package denis.beck.jetmusicbox.repositories.authData
 
 import denis.beck.jetmusicbox.data.AuthData
 
-interface AuthDataManager {
+interface AuthDataRepository {
 
     suspend fun getAuthData(): AuthData
 

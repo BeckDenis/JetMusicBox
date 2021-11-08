@@ -1,4 +1,4 @@
-package denis.beck.jetmusicbox.screens.login
+package denis.beck.jetmusicbox.screens.authentication.login
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import denis.beck.jetmusicbox.navigation.Root
 import denis.beck.jetmusicbox.navigation.Screen
-import denis.beck.jetmusicbox.screens.login.models.LoginUiState
+import denis.beck.jetmusicbox.screens.authentication.login.models.LoginUiState
 
 @Composable
 fun LoginScreen(navController: NavController, viewModel: LoginViewModel) {
@@ -30,6 +30,11 @@ fun LoginScreen(navController: NavController, viewModel: LoginViewModel) {
         }
     }
 
+    LoginScreenUI(navController)
+}
+
+@Composable
+private fun LoginScreenUI(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -42,3 +47,4 @@ fun LoginScreen(navController: NavController, viewModel: LoginViewModel) {
         })
     }
 }
+

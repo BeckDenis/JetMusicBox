@@ -1,4 +1,4 @@
-package denis.beck.jetmusicbox.managers.authData
+package denis.beck.jetmusicbox.repositories.authData
 
 import android.content.Context
 import androidx.datastore.dataStore
@@ -8,8 +8,8 @@ import denis.beck.jetmusicbox.data.AuthDataSerializer
 import kotlinx.coroutines.flow.first
 import javax.inject.Inject
 
-class AuthDataManagerImpl @Inject constructor(@ApplicationContext appContext: Context) :
-    AuthDataManager {
+class AuthDataRepositoryImpl @Inject constructor(@ApplicationContext appContext: Context) :
+    AuthDataRepository {
 
     private val Context.authDataStore by dataStore(
         "auth_data.json",
