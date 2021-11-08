@@ -30,6 +30,11 @@ fun LoginScreen(navController: NavController, viewModel: LoginViewModel) {
         }
     }
 
+    LoginScreenUI(navController)
+}
+
+@Composable
+private fun LoginScreenUI(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -42,3 +47,4 @@ fun LoginScreen(navController: NavController, viewModel: LoginViewModel) {
         })
     }
 }
+
