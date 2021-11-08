@@ -7,10 +7,10 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
-import denis.beck.jetmusicbox.screens.auth.AuthWebScreen
-import denis.beck.jetmusicbox.screens.auth.AuthWebViewModel
-import denis.beck.jetmusicbox.screens.login.LoginScreen
-import denis.beck.jetmusicbox.screens.login.LoginViewModel
+import denis.beck.jetmusicbox.screens.authentication.login.LoginScreen
+import denis.beck.jetmusicbox.screens.authentication.login.LoginViewModel
+import denis.beck.jetmusicbox.screens.authentication.web.AuthWebScreen
+import denis.beck.jetmusicbox.screens.authentication.web.AuthWebViewModel
 import denis.beck.jetmusicbox.screens.main.MainScreen
 
 @Composable

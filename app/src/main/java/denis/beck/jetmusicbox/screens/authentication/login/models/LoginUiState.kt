@@ -1,4 +1,4 @@
-package denis.beck.jetmusicbox.screens.login.models
+package denis.beck.jetmusicbox.screens.authentication.login.models
 
 sealed class LoginUiState {
     object Idle: LoginUiState()

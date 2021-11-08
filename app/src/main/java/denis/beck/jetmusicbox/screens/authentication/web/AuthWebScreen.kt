@@ -1,4 +1,4 @@
-package denis.beck.jetmusicbox.screens.auth
+package denis.beck.jetmusicbox.screens.authentication.web
 
 import android.annotation.SuppressLint
 import android.webkit.WebView
@@ -9,7 +9,7 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.navigation.NavController
 import denis.beck.jetmusicbox.navigation.Root
 import denis.beck.jetmusicbox.networking.URL
-import denis.beck.jetmusicbox.screens.auth.models.AuthWebUiState
+import denis.beck.jetmusicbox.screens.authentication.web.models.AuthWebUiState
 import denis.beck.jetmusicbox.views.AuthWebViewClient
 
 @SuppressLint("SetJavaScriptEnabled")

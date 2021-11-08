@@ -1,4 +1,4 @@
-package denis.beck.jetmusicbox.screens.auth.models
+package denis.beck.jetmusicbox.screens.authentication.web.models
 
 sealed class AuthWebUiState {
     object Loading: AuthWebUiState()
