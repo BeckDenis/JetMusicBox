@@ -6,8 +6,8 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import denis.beck.jetmusicbox.managers.auth.AuthManager
 import denis.beck.jetmusicbox.managers.auth.AuthManagerImpl
-import denis.beck.jetmusicbox.managers.authData.AuthDataManager
-import denis.beck.jetmusicbox.managers.authData.AuthDataManagerImpl
+import denis.beck.jetmusicbox.managers.authData.AuthDataRepository
+import denis.beck.jetmusicbox.managers.authData.AuthDataRepositoryImpl
 import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)
@@ -19,5 +19,5 @@ abstract class ManagersModule {
 
     @Binds
     @Singleton
-    abstract fun provideAuthDataManager(authDataManagerImpl: AuthDataManagerImpl): AuthDataManager
+    abstract fun provideAuthDataManager(authDataManagerImpl: AuthDataRepositoryImpl): AuthDataRepository
 }
