@@ -11,7 +11,7 @@ import denis.beck.jetmusicbox.screens.authentication.login.LoginScreen
 import denis.beck.jetmusicbox.screens.authentication.login.LoginViewModel
 import denis.beck.jetmusicbox.screens.authentication.web.AuthWebScreen
 import denis.beck.jetmusicbox.screens.authentication.web.AuthWebViewModel
-import denis.beck.jetmusicbox.screens.main.MainScreen
+import denis.beck.jetmusicbox.screens.dashboard.MainScreen
 
 @Composable
 fun AppNavigation(navController: NavHostController) {

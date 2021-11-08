@@ -1,4 +1,4 @@
-package denis.beck.jetmusicbox.screens.main
+package denis.beck.jetmusicbox.screens.dashboard
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
