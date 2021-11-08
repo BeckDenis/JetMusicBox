@@ -3,15 +3,32 @@ package denis.beck.jetmusicbox.screens.auth
 import android.annotation.SuppressLint
 import android.webkit.WebView
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.viewinterop.AndroidView
+import androidx.navigation.NavController
+import denis.beck.jetmusicbox.navigation.Root
 import denis.beck.jetmusicbox.networking.URL
+import denis.beck.jetmusicbox.screens.auth.models.AuthWebUiState
 import denis.beck.jetmusicbox.views.AuthWebViewClient
 
 @SuppressLint("SetJavaScriptEnabled")
 @Composable
 fun AuthWebScreen(
-    viewModel: AuthViewModel
+    navController: NavController,
+    viewModel: AuthWebViewModel
 ) {
+
+    val uiState = viewModel.uiState.observeAsState()
+
+    LaunchedEffect(key1 = uiState.value) {
+        if (uiState.value is AuthWebUiState.Authorized) {
+            navController.navigate(Root.Main.route) {
+                popUpTo(Root.Login.route) {  inclusive = true }
+            }
+        }
+    }
+
     AndroidView(
         factory = { context ->
             WebView(context).apply {
