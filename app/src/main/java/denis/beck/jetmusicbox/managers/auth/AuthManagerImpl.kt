@@ -2,8 +2,8 @@ package denis.beck.jetmusicbox.managers.auth
 
 import denis.beck.jetmusicbox.data.AuthData
 import denis.beck.jetmusicbox.extensions.toAuthData
-import denis.beck.jetmusicbox.managers.authData.AuthDataRepository
 import denis.beck.jetmusicbox.networking.apis.AuthApi
+import denis.beck.jetmusicbox.repositories.authData.AuthDataRepository
 import timber.log.Timber
 import javax.inject.Inject
 

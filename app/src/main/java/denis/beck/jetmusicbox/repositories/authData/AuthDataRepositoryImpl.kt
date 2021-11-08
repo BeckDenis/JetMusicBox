@@ -1,4 +1,4 @@
-package denis.beck.jetmusicbox.managers.authData
+package denis.beck.jetmusicbox.repositories.authData
 
 import android.content.Context
 import androidx.datastore.dataStore
