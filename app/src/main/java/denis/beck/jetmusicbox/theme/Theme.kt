@@ -21,7 +21,7 @@ fun MyTheme(themeStyle: ThemeStyle = themeStyle(), content: @Composable () -> Un
 }
 
 @Composable
-fun themeStyle(): ThemeStyle = if (isSystemInDarkTheme()) ThemeStyle.Dark else ThemeStyle.Dark
+fun themeStyle(): ThemeStyle = if (isSystemInDarkTheme()) ThemeStyle.Dark else ThemeStyle.Light
 
 private fun getColors(style: ThemeStyle): Colors = when (style) {
     ThemeStyle.Dark -> DarkColors
