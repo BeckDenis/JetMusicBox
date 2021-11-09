@@ -10,7 +10,6 @@ import androidx.navigation.NavController
 import denis.beck.jetmusicbox.navigation.Root
 import denis.beck.jetmusicbox.networking.URL
 import denis.beck.jetmusicbox.screens.authentication.web.models.AuthWebUiState
-import denis.beck.jetmusicbox.views.AuthWebViewClient
 
 @Composable
 fun AuthWebScreen(

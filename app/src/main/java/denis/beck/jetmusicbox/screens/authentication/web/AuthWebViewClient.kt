@@ -1,10 +1,10 @@
-package denis.beck.jetmusicbox.views
+package denis.beck.jetmusicbox.screens.authentication.web
 
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import denis.beck.jetmusicbox.networking.constants.Queries
 import denis.beck.jetmusicbox.networking.URL
+import denis.beck.jetmusicbox.networking.constants.Queries
 
 class AuthWebViewClient(
     private val code: (String) -> Unit,

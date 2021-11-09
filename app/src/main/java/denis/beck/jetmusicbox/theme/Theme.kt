@@ -7,8 +7,18 @@ import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 
-private val LightColors = lightColors()
-private val DarkColors = darkColors()
+private val LightColors = lightColors(
+    primary = VintagePink,
+    primaryVariant = GrayishRedPurple,
+    onPrimary = PearlWhite,
+    background = PearlWhite
+)
+private val DarkColors = darkColors(
+    primary = VintagePink,
+    primaryVariant = GrayishRedPurple,
+    onPrimary = EerieBlack,
+    background = EerieBlack
+)
 
 @Composable
 fun MyTheme(themeStyle: ThemeStyle = themeStyle(), content: @Composable () -> Unit) {
@@ -26,5 +36,4 @@ fun themeStyle(): ThemeStyle = if (isSystemInDarkTheme()) ThemeStyle.Dark else T
 private fun getColors(style: ThemeStyle): Colors = when (style) {
     ThemeStyle.Dark -> DarkColors
     ThemeStyle.Light -> LightColors
-
 }
