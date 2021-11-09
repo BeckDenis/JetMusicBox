@@ -13,13 +13,15 @@ import javax.inject.Inject
 @HiltViewModel
 class SignInViewModel @Inject constructor(authManager: AuthManager) : ViewModel() {
 
-    private val _uiState = MutableLiveData<SignInUiState>(SignInUiState.Idle)
+    private val _uiState = MutableLiveData<SignInUiState>(SignInUiState.AuthChecking)
     val uiState: LiveData<SignInUiState> = _uiState
 
     init {
         viewModelScope.launch {
             if (authManager.isAuthorize()) {
                 _uiState.postValue(SignInUiState.Authorized)
+            } else {
+                _uiState.postValue(SignInUiState.Idle)
             }
         }
     }
