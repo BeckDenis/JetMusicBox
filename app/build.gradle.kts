@@ -43,6 +43,9 @@ android {
                 "String", "authURL", "\"https://accounts.spotify.com\""
             )
             buildConfigField(
+                "String", "baseURL", "\"https://api.spotify.com/v1/\""
+            )
+            buildConfigField(
                 "String", "redirectURI", "\"https://www.denisbeck.com\""
             )
         }
@@ -57,6 +60,9 @@ android {
             )
             buildConfigField(
                 "String", "authURL", "\"https://accounts.spotify.com\""
+            )
+            buildConfigField(
+                "String", "baseURL", "\"https://api.spotify.com/v1/\""
             )
             buildConfigField(
                 "String", "redirectURI", "\"https://www.denisbeck.com\""
@@ -134,6 +140,9 @@ dependencies {
 
     // Navigation
     implementation("androidx.navigation:navigation-compose:2.4.0-beta02")
+
+    // Coil
+    implementation("io.coil-kt:coil-compose:1.4.0")
 
     /** Test */
     testImplementation("junit:junit:4.+")
