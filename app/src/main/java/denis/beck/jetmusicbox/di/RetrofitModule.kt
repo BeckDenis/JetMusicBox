@@ -7,8 +7,11 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import denis.beck.jetmusicbox.BuildConfig
 import denis.beck.jetmusicbox.networking.AuthInterceptor
+import denis.beck.jetmusicbox.networking.BaseInterceptor
 import denis.beck.jetmusicbox.networking.apis.AuthApi
+import denis.beck.jetmusicbox.networking.apis.SpotifyApi
 import denis.beck.jetmusicbox.networking.constants.ContentTypes
+import denis.beck.jetmusicbox.repositories.authData.AuthDataRepository
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
@@ -28,10 +31,24 @@ class RetrofitModule {
     @Singleton
     @Named(value = RetrofitType.Auth)
     fun provideAuthRetrofit(
-        @Named(value = RetrofitType.Auth) okHttpClient: OkHttpClient
+        @Named(value = RetrofitType.Auth) okHttpClient: OkHttpClient,
     ): Retrofit {
         return Retrofit.Builder()
             .baseUrl(BuildConfig.authURL)
+            .addConverterFactory(Json.asConverterFactory(contentType))
+            .client(okHttpClient)
+            .build()
+    }
+
+    @ExperimentalSerializationApi
+    @Provides
+    @Singleton
+    @Named(value = RetrofitType.Base)
+    fun provideBaseRetrofit(
+        @Named(value = RetrofitType.Base) okHttpClient: OkHttpClient,
+    ): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl(BuildConfig.baseURL)
             .addConverterFactory(Json.asConverterFactory(contentType))
             .client(okHttpClient)
             .build()
@@ -41,7 +58,7 @@ class RetrofitModule {
     @Named(value = RetrofitType.Auth)
     fun provideAuthOkHttpClient(
         authInterceptor: AuthInterceptor,
-        httpLoggingInterceptor: HttpLoggingInterceptor
+        httpLoggingInterceptor: HttpLoggingInterceptor,
     ): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(authInterceptor)
@@ -50,7 +67,23 @@ class RetrofitModule {
     }
 
     @Provides
+    @Named(value = RetrofitType.Base)
+    fun provideBaseOkHttpClient(
+        baseInterceptor: BaseInterceptor,
+        httpLoggingInterceptor: HttpLoggingInterceptor,
+    ): OkHttpClient {
+        return OkHttpClient.Builder()
+            .addInterceptor(baseInterceptor)
+            .addInterceptor(httpLoggingInterceptor)
+            .build()
+    }
+
+    @Provides
     fun provideAuthInterceptor() = AuthInterceptor()
+
+    @Provides
+    fun provideBaseInterceptor(authDataRepository: AuthDataRepository) =
+        BaseInterceptor(authDataRepository)
 
     @Provides
     fun provideLoggingInterceptor() = HttpLoggingInterceptor().apply {
@@ -60,7 +93,13 @@ class RetrofitModule {
     @Singleton
     @Provides
     fun authApi(
-        @Named(value = RetrofitType.Auth) retrofit: Retrofit
+        @Named(value = RetrofitType.Auth) retrofit: Retrofit,
     ): AuthApi = retrofit.create(AuthApi::class.java)
+
+    @Singleton
+    @Provides
+    fun spotifyApi(
+        @Named(value = RetrofitType.Base) retrofit: Retrofit,
+    ): SpotifyApi = retrofit.create(SpotifyApi::class.java)
 
 }
