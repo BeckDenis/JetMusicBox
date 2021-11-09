@@ -6,20 +6,22 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import denis.beck.jetmusicbox.managers.auth.AuthManager
-import denis.beck.jetmusicbox.screens.authentication.login.models.LoginUiState
+import denis.beck.jetmusicbox.screens.authentication.login.models.SignInUiState
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class LoginViewModel @Inject constructor(authManager: AuthManager) : ViewModel() {
+class SignInViewModel @Inject constructor(authManager: AuthManager) : ViewModel() {
 
-    private val _uiState = MutableLiveData<LoginUiState>(LoginUiState.Idle)
-    val uiState: LiveData<LoginUiState> = _uiState
+    private val _uiState = MutableLiveData<SignInUiState>(SignInUiState.AuthChecking)
+    val uiState: LiveData<SignInUiState> = _uiState
 
     init {
         viewModelScope.launch {
             if (authManager.isAuthorize()) {
-                _uiState.postValue(LoginUiState.Authorized)
+                _uiState.postValue(SignInUiState.Authorized)
+            } else {
+                _uiState.postValue(SignInUiState.Idle)
             }
         }
     }
