@@ -141,6 +141,9 @@ dependencies {
     // Navigation
     implementation("androidx.navigation:navigation-compose:2.4.0-beta02")
 
+    // Coil
+    implementation("io.coil-kt:coil-compose:1.4.0")
+
     /** Test */
     testImplementation("junit:junit:4.+")
 
