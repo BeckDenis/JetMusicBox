@@ -11,6 +11,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import denis.beck.jetmusicbox.extensions.currentRoute
 import denis.beck.jetmusicbox.navigation.AppNavigation
 import denis.beck.jetmusicbox.navigation.Screen
+import denis.beck.jetmusicbox.theme.MyTheme
+import denis.beck.jetmusicbox.theme.StatusBarColorProvider
 import denis.beck.jetmusicbox.views.BottomNavBar
 
 @AndroidEntryPoint
@@ -19,13 +21,21 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            val navController = rememberNavController()
-
-            Scaffold(
-                bottomBar = { SetBottomNavBarIfNeed(navController) }
-            ) {
-                AppNavigation(navController)
+            MyTheme {
+                StatusBarColorProvider()
+                Root()
             }
+        }
+    }
+
+    @Composable
+    private fun Root() {
+        val navController = rememberNavController()
+
+        Scaffold(
+            bottomBar = { SetBottomNavBarIfNeed(navController) }
+        ) {
+            AppNavigation(navController)
         }
     }
 
