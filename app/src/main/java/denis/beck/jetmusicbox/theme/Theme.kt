@@ -1,5 +1,6 @@
 package denis.beck.jetmusicbox.theme
 
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.Colors
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
@@ -10,7 +11,7 @@ private val LightColors = lightColors()
 private val DarkColors = darkColors()
 
 @Composable
-fun MyTheme(themeStyle: ThemeStyle, content: @Composable () -> Unit) {
+fun MyTheme(themeStyle: ThemeStyle = themeStyle(), content: @Composable () -> Unit) {
     MaterialTheme(
         colors = getColors(themeStyle),
         shapes = MyShape,
@@ -18,6 +19,9 @@ fun MyTheme(themeStyle: ThemeStyle, content: @Composable () -> Unit) {
         content = content,
     )
 }
+
+@Composable
+fun themeStyle(): ThemeStyle = if (isSystemInDarkTheme()) ThemeStyle.Dark else ThemeStyle.Dark
 
 private fun getColors(style: ThemeStyle): Colors = when (style) {
     ThemeStyle.Dark -> DarkColors
