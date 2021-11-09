@@ -23,9 +23,13 @@ import denis.beck.jetmusicbox.theme.ThemeStyle
 import denis.beck.jetmusicbox.views.MyButton
 
 @Composable
-fun LoginScreen(navController: NavController, viewModel: SignInViewModel) {
+fun SignInScreen(navController: NavController, viewModel: SignInViewModel) {
+    val uiState = viewModel.uiState.observeAsState(SignInUiState.AuthChecking)
 
-    val uiState = viewModel.uiState.observeAsState()
+    when (uiState.value) {
+        SignInUiState.AuthChecking -> SignInScreenUI_AuthChecking()
+        SignInUiState.Idle -> SignInScreenUI_Idle(navController = navController)
+    }
 
     LaunchedEffect(key1 = uiState.value) {
         if (uiState.value is SignInUiState.Authorized) {
@@ -34,12 +38,15 @@ fun LoginScreen(navController: NavController, viewModel: SignInViewModel) {
             }
         }
     }
-
-    LoginScreenUI(navController)
 }
 
 @Composable
-private fun LoginScreenUI(navController: NavController) {
+private fun SignInScreenUI_AuthChecking() {
+    Box(modifier = Modifier.background(MaterialTheme.colors.background), content = {})
+}
+
+@Composable
+private fun SignInScreenUI_Idle(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -76,7 +83,7 @@ private fun navigateToAuthWeb(navController: NavController): () -> Unit = {
 @Preview
 private fun LoginScreenUIDark_Preview() {
     MyTheme(ThemeStyle.Dark) {
-        LoginScreenUI(navController = rememberNavController())
+        SignInScreenUI_Idle(navController = rememberNavController())
     }
 }
 
@@ -84,7 +91,7 @@ private fun LoginScreenUIDark_Preview() {
 @Preview
 private fun LoginScreenUILight_Preview() {
     MyTheme(ThemeStyle.Light) {
-        LoginScreenUI(navController = rememberNavController())
+        SignInScreenUI_Idle(navController = rememberNavController())
     }
 }
 

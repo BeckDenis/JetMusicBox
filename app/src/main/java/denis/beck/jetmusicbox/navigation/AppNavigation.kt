@@ -7,7 +7,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
-import denis.beck.jetmusicbox.screens.authentication.login.LoginScreen
+import denis.beck.jetmusicbox.screens.authentication.login.SignInScreen
 import denis.beck.jetmusicbox.screens.authentication.login.SignInViewModel
 import denis.beck.jetmusicbox.screens.authentication.web.AuthWebScreen
 import denis.beck.jetmusicbox.screens.authentication.web.AuthWebViewModel
@@ -48,6 +48,6 @@ private fun NavGraphBuilder.addAuthWebScreen(navController: NavHostController) {
 private fun NavGraphBuilder.addLoginScreen(navController: NavHostController) {
     composable(Screen.Login.route) {
         val viewModel = hiltViewModel<SignInViewModel>()
-        LoginScreen(navController, viewModel)
+        SignInScreen(navController, viewModel)
     }
 }
