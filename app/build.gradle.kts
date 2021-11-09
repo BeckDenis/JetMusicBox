@@ -43,6 +43,9 @@ android {
                 "String", "authURL", "\"https://accounts.spotify.com\""
             )
             buildConfigField(
+                "String", "baseURL", "\"https://api.spotify.com/v1/\""
+            )
+            buildConfigField(
                 "String", "redirectURI", "\"https://www.denisbeck.com\""
             )
         }
@@ -57,6 +60,9 @@ android {
             )
             buildConfigField(
                 "String", "authURL", "\"https://accounts.spotify.com\""
+            )
+            buildConfigField(
+                "String", "baseURL", "\"https://api.spotify.com/v1/\""
             )
             buildConfigField(
                 "String", "redirectURI", "\"https://www.denisbeck.com\""
