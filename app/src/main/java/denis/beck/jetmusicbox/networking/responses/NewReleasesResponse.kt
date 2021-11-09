@@ -3,12 +3,12 @@ package denis.beck.jetmusicbox.networking.responses
 import kotlinx.serialization.SerialName
 
 data class NewReleasesResponse(
-    @SerialName("albums") val albums: Albums
+    @SerialName("albums") val albums: AlbumsResponse
 )
 
-data class Albums(
+data class AlbumsResponse(
     @SerialName("href") val href: String,
-    @SerialName("items") val items: List<Album>,
+    @SerialName("items") val items: List<AlbumResponse>,
     @SerialName("limit") val limit: Int,
     @SerialName("next") val next: String,
     @SerialName("offset") val offset: Int,
@@ -16,14 +16,14 @@ data class Albums(
     @SerialName("total") val total: Int,
 )
 
-data class Album(
+data class AlbumResponse(
     @SerialName("album_type") val albumType: String,
-    @SerialName("artists") val artists: List<Artist>,
+    @SerialName("artists") val artists: List<ArtistResponse>,
     @SerialName("available_markets") val availableMarkets: List<String>,
-    @SerialName("external_urls") val externalUrl: ExternalUrl,
+    @SerialName("external_urls") val externalUrl: ExternalUrlResponse,
     @SerialName("href") val href: String,
     @SerialName("id") val id: String,
-    @SerialName("images") val images: List<Images>,
+    @SerialName("images") val images: List<ImageResponse>,
     @SerialName("name") val name: String,
     @SerialName("release_date") val releaseDate: String,
     @SerialName("release_date_precision") val releaseDatePrecision: String,
@@ -32,8 +32,8 @@ data class Album(
     @SerialName("uri") val uri: String,
 )
 
-data class Artist(
-    @SerialName("external_urls") val externalUrl: ExternalUrl,
+data class ArtistResponse(
+    @SerialName("external_urls") val externalUrl: ExternalUrlResponse,
     @SerialName("href") val href: String,
     @SerialName("id") val id: String,
     @SerialName("name") val name: String,
@@ -41,11 +41,11 @@ data class Artist(
     @SerialName("uri") val uri: String,
 )
 
-data class ExternalUrl(
+data class ExternalUrlResponse(
     @SerialName("spotify") val spotify: String,
 )
 
-data class Images(
+data class ImageResponse(
     @SerialName("height") val height: Int,
     @SerialName("url") val url: String,
     @SerialName("width") val width: Int,
