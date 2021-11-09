@@ -1,21 +1,25 @@
 package denis.beck.jetmusicbox.networking.responses
 
 import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class NewReleasesResponse(
     @SerialName("albums") val albums: AlbumsResponse
 )
 
+@Serializable
 data class AlbumsResponse(
     @SerialName("href") val href: String,
     @SerialName("items") val items: List<AlbumResponse>,
     @SerialName("limit") val limit: Int,
-    @SerialName("next") val next: String,
+    @SerialName("next") val next: String?,
     @SerialName("offset") val offset: Int,
-    @SerialName("previous") val previous: String,
+    @SerialName("previous") val previous: String?,
     @SerialName("total") val total: Int,
 )
 
+@Serializable
 data class AlbumResponse(
     @SerialName("album_type") val albumType: String,
     @SerialName("artists") val artists: List<ArtistResponse>,
@@ -32,6 +36,7 @@ data class AlbumResponse(
     @SerialName("uri") val uri: String,
 )
 
+@Serializable
 data class ArtistResponse(
     @SerialName("external_urls") val externalUrl: ExternalUrlResponse,
     @SerialName("href") val href: String,
@@ -41,12 +46,14 @@ data class ArtistResponse(
     @SerialName("uri") val uri: String,
 )
 
+@Serializable
 data class ExternalUrlResponse(
     @SerialName("spotify") val spotify: String,
 )
 
+@Serializable
 data class ImageResponse(
-    @SerialName("height") val height: Int,
+    @SerialName("height") val height: Int?,
+    @SerialName("width") val width: Int?,
     @SerialName("url") val url: String,
-    @SerialName("width") val width: Int,
 )
