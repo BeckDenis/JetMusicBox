@@ -66,6 +66,7 @@ class RetrofitModule {
             .build()
     }
 
+    // Todo: Add Authenticator to refresh access token
     @Provides
     @Named(value = RetrofitType.Base)
     fun provideBaseOkHttpClient(
