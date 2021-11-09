@@ -53,7 +53,7 @@ fun MyButton(text: String, onClick: () -> Unit = {}) = Button(
 
 @Composable
 @Preview
-fun MyButtonDark_Preview() {
+private fun MyButtonDark_Preview() {
     MyTheme(ThemeStyle.Dark) {
         MyButton(text = "Button")
     }
@@ -61,7 +61,7 @@ fun MyButtonDark_Preview() {
 
 @Composable
 @Preview
-fun MyButtonLight_Preview() {
+private fun MyButtonLight_Preview() {
     MyTheme(ThemeStyle.Light) {
         MyButton(text = "Button")
     }
