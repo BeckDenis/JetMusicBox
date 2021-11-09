@@ -5,5 +5,7 @@ import javax.inject.Inject
 
 class AlbumsRepositoryImpl @Inject constructor(private val spotifyApi: SpotifyApi) :
     AlbumsRepository {
+
     override suspend fun getNewReleases() = spotifyApi.getNewReleases()
+
 }
