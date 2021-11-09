@@ -17,18 +17,18 @@ import androidx.navigation.compose.rememberNavController
 import denis.beck.jetmusicbox.R
 import denis.beck.jetmusicbox.navigation.Root
 import denis.beck.jetmusicbox.navigation.Screen
-import denis.beck.jetmusicbox.screens.authentication.login.models.LoginUiState
+import denis.beck.jetmusicbox.screens.authentication.login.models.SignInUiState
 import denis.beck.jetmusicbox.theme.MyTheme
 import denis.beck.jetmusicbox.theme.ThemeStyle
 import denis.beck.jetmusicbox.views.MyButton
 
 @Composable
-fun LoginScreen(navController: NavController, viewModel: LoginViewModel) {
+fun LoginScreen(navController: NavController, viewModel: SignInViewModel) {
 
     val uiState = viewModel.uiState.observeAsState()
 
     LaunchedEffect(key1 = uiState.value) {
-        if (uiState.value is LoginUiState.Authorized) {
+        if (uiState.value is SignInUiState.Authorized) {
             navController.navigate(Root.Main.route) {
                 popUpTo(Root.Login.route) { inclusive = true }
             }
