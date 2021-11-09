@@ -12,6 +12,7 @@ import denis.beck.jetmusicbox.screens.authentication.login.LoginViewModel
 import denis.beck.jetmusicbox.screens.authentication.web.AuthWebScreen
 import denis.beck.jetmusicbox.screens.authentication.web.AuthWebViewModel
 import denis.beck.jetmusicbox.screens.dashboard.main.MainScreen
+import denis.beck.jetmusicbox.screens.dashboard.main.MainViewModel
 
 @Composable
 fun AppNavigation(navController: NavHostController) {
@@ -30,7 +31,10 @@ private fun NavGraphBuilder.addLoginRoot(navController: NavHostController) {
 
 private fun NavGraphBuilder.addMainRoot() {
     navigation(startDestination = Screen.Main.route, route = Root.Main.route) {
-        composable(Screen.Main.route) { MainScreen() }
+        composable(Screen.Main.route) {
+            val viewModel = hiltViewModel<MainViewModel>()
+            MainScreen(viewModel)
+        }
     }
 }
 
