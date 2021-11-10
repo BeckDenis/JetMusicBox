@@ -7,6 +7,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import denis.beck.jetmusicbox.BuildConfig
 import denis.beck.jetmusicbox.networking.AuthInterceptor
+import denis.beck.jetmusicbox.networking.Authenticator
 import denis.beck.jetmusicbox.networking.BaseInterceptor
 import denis.beck.jetmusicbox.networking.apis.AuthApi
 import denis.beck.jetmusicbox.networking.apis.SpotifyApi
@@ -66,14 +67,15 @@ class RetrofitModule {
             .build()
     }
 
-    // Todo: Add Authenticator to refresh access token
     @Provides
     @Named(value = RetrofitType.Base)
     fun provideBaseOkHttpClient(
+        authenticator: Authenticator,
         baseInterceptor: BaseInterceptor,
         httpLoggingInterceptor: HttpLoggingInterceptor,
     ): OkHttpClient {
         return OkHttpClient.Builder()
+            .authenticator(authenticator)
             .addInterceptor(baseInterceptor)
             .addInterceptor(httpLoggingInterceptor)
             .build()
