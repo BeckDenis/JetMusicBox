@@ -8,4 +8,5 @@ object Queries {
     const val code = "code"
     const val error = "error"
     const val grantType = "grant_type"
+    const val refreshToken = "refresh_token"
 }
