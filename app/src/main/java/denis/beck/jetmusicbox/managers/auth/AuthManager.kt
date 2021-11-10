@@ -5,4 +5,6 @@ interface AuthManager {
     suspend fun isAuthorize(): Boolean
 
     suspend fun authorize(code: String): Boolean
+
+    suspend fun refreshToken(): String?
 }
