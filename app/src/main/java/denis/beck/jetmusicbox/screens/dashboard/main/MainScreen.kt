@@ -37,7 +37,7 @@ fun MainScreenUI_Idle(idleState: MainUiState.Idle) {
             .verticalScroll(state = scrollState),
     ) {
         Label(text = "New Releases") {
-            DoubleRow(idleState.albums) { album ->
+            DoubleRow(idleState.albums ?: return@Label) { album ->
                 Album(album)
             }
         }
@@ -45,7 +45,7 @@ fun MainScreenUI_Idle(idleState: MainUiState.Idle) {
         Spacer(modifier = Modifier.height(24.dp))
 
         Label(text = "Featured Playlists") {
-            DoubleRow(idleState.playlists) { playlist ->
+            DoubleRow(idleState.playlists ?: return@Label) { playlist ->
                 Playlist(playlist)
             }
         }

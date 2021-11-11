@@ -54,7 +54,7 @@ fun MyText(
         lineHeight = _lineHeight,
         overflow = overflow,
         softWrap = softWrap,
-        maxLines = lines ?: maxLines,
+        maxLines = lines,
         onTextLayout = onTextLayout,
         style = style
     )
