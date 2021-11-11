@@ -29,26 +29,20 @@ fun MyText(
     letterSpacing: TextUnit = TextUnit.Unspecified,
     textDecoration: TextDecoration? = null,
     textAlign: TextAlign? = null,
-    lineHeight: TextUnit = TextUnit.Unspecified,
     overflow: TextOverflow = TextOverflow.Clip,
     softWrap: Boolean = true,
     maxLines: Int = Int.MAX_VALUE,
     onTextLayout: (TextLayoutResult) -> Unit = {},
     style: TextStyle = LocalTextStyle.current,
-    lines: Int? = null,
+    lines: Int,
 ) {
-    var _lineHeight = lineHeight
-
-    if (lines != null) {
-        _lineHeight = style.fontSize * 4 / 3
-        modifier.height(with(LocalDensity.current) {
-            (_lineHeight * lines).toDp()
-        })
-    }
+    val _lineHeight  = style.fontSize * 4 / 3
 
     Text(
         text = text,
-        modifier = modifier.setUpModifier(lines, _lineHeight),
+        modifier = modifier.height(with(LocalDensity.current) {
+            (_lineHeight * lines).toDp()
+        }),
         color = color,
         fontSize = fontSize,
         fontStyle = fontStyle,
@@ -65,12 +59,3 @@ fun MyText(
         style = style
     )
 }
-
-@Composable
-private fun Modifier.setUpModifier(lines: Int?, _lineHeight: TextUnit): Modifier =
-    if (lines != null) {
-        this.height(with(LocalDensity.current) {
-            (_lineHeight * lines).toDp()
-        })
-    } else this
-
