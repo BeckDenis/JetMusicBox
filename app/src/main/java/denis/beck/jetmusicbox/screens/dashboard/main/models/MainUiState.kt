@@ -6,7 +6,7 @@ import denis.beck.jetmusicbox.networking.responses.PlaylistResponse
 sealed class MainUiState {
     object Loading : MainUiState()
     data class Idle(
-        val albums: List<AlbumResponse>,
-        val playlists: List<PlaylistResponse>
+        val albums: List<AlbumResponse>? = null,
+        val playlists: List<PlaylistResponse>? = null
     ) : MainUiState()
 }
