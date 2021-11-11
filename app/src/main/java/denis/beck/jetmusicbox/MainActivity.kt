@@ -34,8 +34,8 @@ class MainActivity : ComponentActivity() {
 
         Scaffold(
             bottomBar = { SetBottomNavBarIfNeed(navController) }
-        ) {
-            AppNavigation(navController)
+        ) { innerPaddings ->
+            AppNavigation(navController, innerPaddings)
         }
     }
 
