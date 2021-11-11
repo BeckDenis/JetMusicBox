@@ -14,6 +14,21 @@ private val CaviarDreams = FontFamily(
 )
 
 val MyTypography = Typography(
+    h6 = TextStyle(
+        fontFamily = CaviarDreams,
+        fontWeight = FontWeight.Normal,
+        fontSize = 20.sp
+    ),
+    subtitle1 = TextStyle(
+        fontFamily = CaviarDreams,
+        fontWeight = FontWeight.Normal,
+        fontSize = 16.sp
+    ),
+    subtitle2 = TextStyle(
+        fontFamily = CaviarDreams,
+        fontWeight = FontWeight.Normal,
+        fontSize = 14.sp
+    ),
     button = TextStyle(
         fontFamily = CaviarDreams,
         fontWeight = FontWeight.Bold,
