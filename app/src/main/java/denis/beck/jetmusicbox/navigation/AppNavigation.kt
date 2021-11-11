@@ -1,6 +1,9 @@
 package denis.beck.jetmusicbox.navigation
 
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
@@ -15,8 +18,12 @@ import denis.beck.jetmusicbox.screens.dashboard.main.MainScreen
 import denis.beck.jetmusicbox.screens.dashboard.main.MainViewModel
 
 @Composable
-fun AppNavigation(navController: NavHostController) {
-    NavHost(navController = navController, startDestination = Root.Login.route) {
+fun AppNavigation(navController: NavHostController, paddings: PaddingValues) {
+    NavHost(
+        navController = navController,
+        startDestination = Root.Login.route,
+        modifier = Modifier.padding(paddings)
+    ) {
         addLoginRoot(navController)
         addMainRoot()
     }
