@@ -15,8 +15,8 @@ import androidx.navigation.NavController
 import denis.beck.jetmusicbox.R
 import denis.beck.jetmusicbox.navigation.Root
 import denis.beck.jetmusicbox.navigation.Screen
+import denis.beck.jetmusicbox.screens.authentication.login.models.SignInEffect
 import denis.beck.jetmusicbox.screens.authentication.login.models.SignInEvent
-import denis.beck.jetmusicbox.screens.authentication.login.models.SignInSideEffect
 import denis.beck.jetmusicbox.screens.authentication.login.models.SignInState
 import denis.beck.jetmusicbox.theme.MyTheme
 import denis.beck.jetmusicbox.theme.ThemeStyle
@@ -37,12 +37,12 @@ fun SignInScreen(navController: NavController, viewModel: SignInViewModel) {
     LaunchedEffect(key1 = "firstLaunch") {
         effect.onEach { effect ->
             when (effect) {
-                is SignInSideEffect.Navigation.ToMain -> {
+                is SignInEffect.Navigation.ToMain -> {
                     navController.navigate(Root.Main.route) {
                         popUpTo(Root.Login.route) { inclusive = true }
                     }
                 }
-                is SignInSideEffect.Navigation.ToAuthWeb -> {
+                is SignInEffect.Navigation.ToAuthWeb -> {
                     navController.navigate(Screen.AuthWeb.route)
                 }
             }
