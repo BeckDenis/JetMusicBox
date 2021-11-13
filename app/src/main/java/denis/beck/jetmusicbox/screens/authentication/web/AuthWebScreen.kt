@@ -4,12 +4,13 @@ import android.annotation.SuppressLint
 import android.webkit.WebView
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.navigation.NavController
 import denis.beck.jetmusicbox.navigation.Root
 import denis.beck.jetmusicbox.networking.URL
-import denis.beck.jetmusicbox.screens.authentication.web.models.AuthWebState
+import denis.beck.jetmusicbox.screens.authentication.web.models.AuthWebEffect
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.onEach
 
 @Composable
 fun AuthWebScreen(
@@ -17,14 +18,19 @@ fun AuthWebScreen(
     viewModel: AuthWebViewModel
 ) {
 
-    val uiState = viewModel.uiState.observeAsState()
+    val uiState = viewModel.uiState
+    val effect = viewModel.effect
 
-    LaunchedEffect(key1 = uiState.value) {
-        if (uiState.value is AuthWebState.Authorized) {
-            navController.navigate(Root.Main.route) {
-                popUpTo(Root.Login.route) {  inclusive = true }
+    LaunchedEffect(key1 = "firstLaunch") {
+        effect.onEach { effect ->
+            when (effect) {
+                is AuthWebEffect.Navigate.ToMain -> {
+                    navController.navigate(Root.Main.route) {
+                        popUpTo(Root.Login.route) {  inclusive = true }
+                    }
+                }
             }
-        }
+        }.collect { }
     }
 
     AuthWebUI(viewModel)
