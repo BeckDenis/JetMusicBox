@@ -66,7 +66,7 @@ private fun SignInScreenUI_Idle(event: (SignInEvent) -> Unit = {}) {
     ) {
         AppIcon()
         Box(modifier = Modifier.weight(0.2f), contentAlignment = Alignment.Center) {
-            MyButton(text = "Login", onClick = { event.invoke(SignInEvent.SignInButtonClick) })
+            MyButton(text = "Sign In", onClick = { event.invoke(SignInEvent.SignInButtonClick) })
         }
     }
 }
