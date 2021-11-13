@@ -9,7 +9,7 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.navigation.NavController
 import denis.beck.jetmusicbox.navigation.Root
 import denis.beck.jetmusicbox.networking.URL
-import denis.beck.jetmusicbox.screens.authentication.web.models.AuthWebUiState
+import denis.beck.jetmusicbox.screens.authentication.web.models.AuthWebState
 
 @Composable
 fun AuthWebScreen(
@@ -20,7 +20,7 @@ fun AuthWebScreen(
     val uiState = viewModel.uiState.observeAsState()
 
     LaunchedEffect(key1 = uiState.value) {
-        if (uiState.value is AuthWebUiState.Authorized) {
+        if (uiState.value is AuthWebState.Authorized) {
             navController.navigate(Root.Main.route) {
                 popUpTo(Root.Login.route) {  inclusive = true }
             }
