@@ -1,4 +1,4 @@
-package denis.beck.jetmusicbox.data
+package denis.beck.jetmusicbox.core.models
 
 import kotlinx.serialization.Serializable
 

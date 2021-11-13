@@ -1,6 +1,6 @@
 package denis.beck.jetmusicbox.repositories.authData
 
-import denis.beck.jetmusicbox.data.AuthData
+import denis.beck.jetmusicbox.core.models.AuthData
 
 interface AuthDataRepository {
 
