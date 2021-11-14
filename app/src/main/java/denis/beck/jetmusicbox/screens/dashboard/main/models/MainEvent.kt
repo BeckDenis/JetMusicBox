@@ -1,4 +1,6 @@
 package denis.beck.jetmusicbox.screens.dashboard.main.models
 
-sealed class MainEvent {
+import denis.beck.jetmusicbox.core.viewmodel.UiEvent
+
+sealed class MainEvent: UiEvent {
 }
