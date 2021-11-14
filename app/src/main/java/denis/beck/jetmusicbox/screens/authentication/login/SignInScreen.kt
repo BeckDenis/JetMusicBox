@@ -6,37 +6,47 @@ import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import denis.beck.jetmusicbox.R
 import denis.beck.jetmusicbox.navigation.Root
 import denis.beck.jetmusicbox.navigation.Screen
-import denis.beck.jetmusicbox.screens.authentication.login.models.SignInUiState
+import denis.beck.jetmusicbox.screens.authentication.login.models.SignInEffect
+import denis.beck.jetmusicbox.screens.authentication.login.models.SignInEvent
+import denis.beck.jetmusicbox.screens.authentication.login.models.SignInState
 import denis.beck.jetmusicbox.theme.MyTheme
 import denis.beck.jetmusicbox.theme.ThemeStyle
 import denis.beck.jetmusicbox.views.MyButton
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.onEach
 
 @Composable
 fun SignInScreen(navController: NavController, viewModel: SignInViewModel) {
-    val uiState = viewModel.uiState.observeAsState(SignInUiState.AuthChecking)
+    val uiState = viewModel.uiState
+    val effect = viewModel.effect
 
     when (uiState.value) {
-        SignInUiState.AuthChecking -> SignInScreenUI_AuthChecking()
-        SignInUiState.Idle -> SignInScreenUI_Idle(navController = navController)
+        SignInState.AuthChecking -> SignInScreenUI_AuthChecking()
+        SignInState.Idle -> SignInScreenUI_Idle(viewModel::setEvent)
     }
 
-    LaunchedEffect(key1 = uiState.value) {
-        if (uiState.value is SignInUiState.Authorized) {
-            navController.navigate(Root.Main.route) {
-                popUpTo(Root.Login.route) { inclusive = true }
+    LaunchedEffect(key1 = "firstLaunch") {
+        effect.onEach { effect ->
+            when (effect) {
+                is SignInEffect.Navigation.ToMain -> {
+                    navController.navigate(Root.Main.route) {
+                        popUpTo(Root.Login.route) { inclusive = true }
+                    }
+                }
+                is SignInEffect.Navigation.ToAuthWeb -> {
+                    navController.navigate(Screen.AuthWeb.route)
+                }
             }
-        }
+        }.collect { }
     }
 }
 
@@ -46,7 +56,7 @@ private fun SignInScreenUI_AuthChecking() {
 }
 
 @Composable
-private fun SignInScreenUI_Idle(navController: NavController) {
+private fun SignInScreenUI_Idle(event: (SignInEvent) -> Unit = {}) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -56,7 +66,7 @@ private fun SignInScreenUI_Idle(navController: NavController) {
     ) {
         AppIcon()
         Box(modifier = Modifier.weight(0.2f), contentAlignment = Alignment.Center) {
-            MyButton(text = "Login", onClick = navigateToAuthWeb(navController))
+            MyButton(text = "Sign In", onClick = { event.invoke(SignInEvent.SignInButtonClick) })
         }
     }
 }
@@ -75,15 +85,10 @@ private fun ColumnScope.AppIcon() {
 }
 
 @Composable
-private fun navigateToAuthWeb(navController: NavController): () -> Unit = {
-    navController.navigate(Screen.AuthWeb.route)
-}
-
-@Composable
 @Preview
 private fun LoginScreenUIDark_Preview() {
     MyTheme(ThemeStyle.Dark) {
-        SignInScreenUI_Idle(navController = rememberNavController())
+        SignInScreenUI_Idle()
     }
 }
 
@@ -91,7 +96,7 @@ private fun LoginScreenUIDark_Preview() {
 @Preview
 private fun LoginScreenUILight_Preview() {
     MyTheme(ThemeStyle.Light) {
-        SignInScreenUI_Idle(navController = rememberNavController())
+        SignInScreenUI_Idle()
     }
 }
 

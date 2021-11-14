@@ -6,29 +6,28 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 import denis.beck.jetmusicbox.networking.responses.AlbumResponse
 import denis.beck.jetmusicbox.networking.responses.PlaylistResponse
-import denis.beck.jetmusicbox.screens.dashboard.main.models.MainUiState
+import denis.beck.jetmusicbox.screens.dashboard.main.models.MainState
 import denis.beck.jetmusicbox.views.DoubleRow
 import denis.beck.jetmusicbox.views.Label
 import denis.beck.jetmusicbox.views.MyText
 
 @Composable
 fun MainScreen(viewModel: MainViewModel) {
-    val uiState = viewModel.uiState.observeAsState(initial = MainUiState.Loading)
+    val uiState = viewModel.uiState
 
     when (val currentState = uiState.value) {
-        is MainUiState.Idle -> MainScreenUI_Idle(currentState)
+        is MainState.Idle -> MainScreenUI_Idle(currentState)
     }
 }
 
 @Composable
-fun MainScreenUI_Idle(idleState: MainUiState.Idle) {
+fun MainScreenUI_Idle(idleState: MainState.Idle) {
     val scrollState = rememberScrollState()
 
     Column(

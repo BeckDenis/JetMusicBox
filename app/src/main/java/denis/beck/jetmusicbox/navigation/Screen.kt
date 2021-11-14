@@ -7,7 +7,7 @@ sealed class Screen(val route: String) {
 
     companion object {
         fun isNavBarVisible(route: String?) = when (route) {
-            Login.route, AuthWeb.route -> false
+            Login.route, AuthWeb.route, null -> false
             else -> true
         }
     }

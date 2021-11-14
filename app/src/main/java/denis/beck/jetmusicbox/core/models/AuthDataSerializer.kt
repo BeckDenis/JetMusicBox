@@ -1,4 +1,4 @@
-package denis.beck.jetmusicbox.data
+package denis.beck.jetmusicbox.core.models
 
 import androidx.datastore.core.CorruptionException
 import androidx.datastore.core.Serializer
