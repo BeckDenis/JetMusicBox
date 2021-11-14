@@ -22,6 +22,7 @@ class AuthWebViewClient(
 
     override fun onPageFinished(view: WebView?, url: String?) {
         super.onPageFinished(view, url)
+        // No need to show our redirect page, so keep showing progress indicator
         if (Uri.parse(url).authority != Uri.parse(BuildConfig.redirectURI).authority) {
             isPageLoading(false)
         }
