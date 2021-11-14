@@ -26,19 +26,12 @@ fun AuthWebScreen(
     navController: NavController,
     viewModel: AuthWebViewModel,
 ) {
-
     val uiState = viewModel.uiState
     val effect = viewModel.effect
 
     LaunchedEffect(key1 = "firstLaunch") {
         effect.onEach { effect ->
-            when (effect) {
-                is AuthWebEffect.Navigate.ToMain -> {
-                    navController.navigate(Root.Main.route) {
-                        popUpTo(Root.Login.route) { inclusive = true }
-                    }
-                }
-            }
+            handleEffect(effect, navController)
         }.collect { }
     }
 
@@ -73,6 +66,19 @@ private fun AuthWebUI(state: AuthWebState, event: (AuthWebEvent) -> Unit) {
             contentAlignment = Alignment.Center) {
 
             CircularProgressIndicator()
+        }
+    }
+}
+
+private fun handleEffect(
+    effect: AuthWebEffect,
+    navController: NavController,
+) {
+    when (effect) {
+        is AuthWebEffect.Navigate.ToMain -> {
+            navController.navigate(Root.Main.route) {
+                popUpTo(Root.Login.route) { inclusive = true }
+            }
         }
     }
 }
