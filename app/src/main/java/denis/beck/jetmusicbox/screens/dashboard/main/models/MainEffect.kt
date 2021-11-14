@@ -1,4 +1,6 @@
 package denis.beck.jetmusicbox.screens.dashboard.main.models
 
-sealed class MainEffect {
+import denis.beck.jetmusicbox.core.viewmodel.UiSideEffect
+
+sealed class MainEffect: UiSideEffect {
 }
