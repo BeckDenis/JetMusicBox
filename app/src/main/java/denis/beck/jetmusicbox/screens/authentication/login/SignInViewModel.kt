@@ -7,7 +7,6 @@ import denis.beck.jetmusicbox.managers.auth.AuthManager
 import denis.beck.jetmusicbox.screens.authentication.login.models.SignInEffect
 import denis.beck.jetmusicbox.screens.authentication.login.models.SignInEvent
 import denis.beck.jetmusicbox.screens.authentication.login.models.SignInState
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -16,7 +15,7 @@ class SignInViewModel @Inject constructor(authManager: AuthManager) :
     BaseViewModel<SignInEvent, SignInState, SignInEffect>() {
 
     init {
-        viewModelScope.launch(Dispatchers.IO) { checkAuth(authManager) }
+        viewModelScope.launch { checkAuth(authManager) }
     }
 
     private suspend fun checkAuth(authManager: AuthManager) {
