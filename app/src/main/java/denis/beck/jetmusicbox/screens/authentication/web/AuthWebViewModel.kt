@@ -14,17 +14,21 @@ import javax.inject.Inject
 class AuthWebViewModel @Inject constructor(private val authManager: AuthManager) :
     BaseViewModel<AuthWebEvent, AuthWebState, AuthWebEffect>() {
 
-    override fun setInitialState() = AuthWebState.Loading
+    override fun setInitialState() = AuthWebState.Idle(isLoading = true)
 
     override fun handleEvents(event: AuthWebEvent) {
         when (event) {
             is AuthWebEvent.UserAuthorized -> setEffect {
                 AuthWebEffect.Navigate.ToMain
             }
+            is AuthWebEvent.PageChangedState -> setState {
+                AuthWebState.Idle(isLoading = event.isLoading)
+            }
+            is AuthWebEvent.CodeReceived -> authorize(event.code)
         }
     }
 
-    fun authorize(code: String) {
+    private fun authorize(code: String) {
         viewModelScope.launch {
             val isAuthorize = authManager.authorize(code)
             if (isAuthorize) setEvent(AuthWebEvent.UserAuthorized)
