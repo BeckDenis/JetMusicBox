@@ -6,7 +6,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
@@ -20,7 +19,7 @@ import denis.beck.jetmusicbox.views.MyText
 
 @Composable
 fun MainScreen(viewModel: MainViewModel) {
-    val uiState = viewModel.state.observeAsState(initial = MainState.Loading)
+    val uiState = viewModel.uiState
 
     when (val currentState = uiState.value) {
         is MainState.Idle -> MainScreenUI_Idle(currentState)
