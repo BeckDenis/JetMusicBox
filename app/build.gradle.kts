@@ -91,33 +91,33 @@ android {
 dependencies {
     // Android
     implementation("androidx.core:core-ktx:1.7.0")
-    implementation("androidx.appcompat:appcompat:1.3.1")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.1")
-    implementation("com.google.android.material:material:1.4.0")
+    implementation("androidx.appcompat:appcompat:1.4.1")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.3")
+    implementation("com.google.android.material:material:1.5.0")
     implementation("androidx.activity:activity-compose:1.4.0")
 
     // Jetpack Compose
-    implementation("androidx.compose.ui:ui:1.0.5")
-    implementation("androidx.compose.ui:ui-tooling:1.0.5")
-    implementation("androidx.compose.foundation:foundation:1.0.5")
+    implementation("androidx.compose.ui:ui:1.1.1")
+    implementation("androidx.compose.ui:ui-tooling:1.1.1")
+    implementation("androidx.compose.foundation:foundation:1.1.1")
 
     implementation("com.google.accompanist:accompanist-systemuicontroller:0.18.0")
 
-    implementation("androidx.compose.material:material:1.0.5")
-    implementation("androidx.compose.material:material-icons-core:1.0.5")
-    implementation("androidx.compose.material:material-icons-extended:1.0.5")
+    implementation("androidx.compose.material:material:1.1.1")
+    implementation("androidx.compose.material:material-icons-core:1.1.1")
+    implementation("androidx.compose.material:material-icons-extended:1.1.1")
 
-    implementation("androidx.compose.runtime:runtime-livedata:1.0.5")
+    implementation("androidx.compose.runtime:runtime-livedata:1.1.1")
 
     // LifeCycle
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.4.0")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.4.0")
-    implementation("androidx.lifecycle:lifecycle-common-java8:2.4.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.4.1")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.4.1")
+    implementation("androidx.lifecycle:lifecycle-common-java8:2.4.1")
 
     // Hilt
     implementation("com.google.dagger:hilt-android:2.38.1")
-    implementation("androidx.hilt:hilt-navigation-compose:1.0.0-alpha03")
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
     kapt("com.google.dagger:hilt-android-compiler:2.38.1")
 
     // Retrofit
@@ -139,20 +139,20 @@ dependencies {
     implementation("androidx.datastore:datastore:1.0.0")
 
     // Navigation
-    implementation("androidx.navigation:navigation-compose:2.4.0-beta02")
+    implementation("androidx.navigation:navigation-compose:2.5.0-alpha03")
 
     // Coil
     implementation("io.coil-kt:coil-compose:1.4.0")
 
     /** Test */
-    testImplementation("junit:junit:4.+")
+    testImplementation("junit:junit:")
 
     /** Android Test */
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
 
     // Compose
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.0.5")
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.1.1")
 }
 
 // Allow references to generated code
